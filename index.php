@@ -29,18 +29,7 @@
 <body>
     
     <?php include "navbar.php";
-    include "db_connect.php";
     #keys: 1A7WY1GIQ35IYI50, UEHA1N7EEYXN3TZZ, POXK65LMPSIFYHCQ
-
-  /*   $rate = $rate['Realtime Currency Exchange Rate'];
-    $dataforAllDays = $data['Time Series (Daily)'];
-    $dataforSingleDay = $dataforAllDays['2023-01-13'];
-    $data = $dataforSingleDay['1. open'];
-    $data = substr($data, 0, 5);
-    $rate = $rate['5. Exchange Rate'];
-    $data = $data * $rate; #convert from dollar to euro
-    $amount = 1;
-    $value = $data * $amount; #calculate total value */
     ?>
 
     <div class="wrapper">
@@ -53,13 +42,33 @@
                         <th>Kurs [&#x20AC;]</th>
                         <th>Wert [&#x20AC;]</th>
                     </tr>
-                    <tr>
-                        <td>Mercedes-Benz Group</td>
-                        <td>710000</td>
-                        <td><?= $amount ?></td>
-                        <td><?= $data ?></td>
-                        <td><?= $value ?></td>
-                    </tr>
+                    <?php
+                    include "./php/db_connect.php";
+
+                    $sql = "SELECT * FROM stocks";
+                    $result = mysqli_query($mysqli, $sql);
+
+                    if (!$result) {
+                        die("Invalid query: " . $mysqli->error);
+                    }
+
+
+                    while ($row = $result->fetch_assoc()) {
+                        $stock_name = $row['Name'];
+                        $stock_symbol = $row['Symbol'];
+                        $amount = $row['Amount'];
+                        $price = $row['Price'];
+                        $value = $row['Value'];
+
+                        echo "<tr>
+                        <td>" . $stock_name ."</td>
+                        <td>" . $stock_symbol . " </td>
+                        <td>" . $amount ."</td>
+                        <td>" . $price ."</td>
+                        <td>" . $value . "</td>
+                        </tr>";
+                            }
+                    ?>
                 </table> 
             </div>
         </div>
