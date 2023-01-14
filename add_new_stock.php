@@ -25,6 +25,11 @@
         <input class="inputs" type="text"  id="add_stk_symb" name="add_stk_symb" required>
       </div>
 
+      <div class="inputfield">
+        <label class="label">Amount</label>
+        <input class="inputs" type="text" id="add_amount" name="add_amount" required>
+      </div>
+
       <!-- Speicherknopf -->
       <input class="btn" type="submit" value="Hinzufügen">
     </form>
