@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body{
+  background: #b4b4b4;
+  padding: 0 10px;
+}
+
+.wrapper{
+  max-width: 800px;
+  width: 100%;
+  background: #fff;
+  margin: 20px auto;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.125);
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.title{
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #ff862c;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+
+.column {
+  float: left;
+  width: 33.3333333%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 500px) {
+  .column {width: 100;}
+}
+

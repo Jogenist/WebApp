@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body{
+  background: #b4b4b4;
+  padding: 0 10px;
+}
+
+.wrapper{
+  max-width: 800px;
+  width: 100%;
+  background: #fff;
+  margin: 20px auto;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.125);
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.title{
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #ff862c;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.form{
+  top: 100px;
+  position: center;
+  width: 100%;
+  transition: .5s;
+}
+
+.inputfield{
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.inputs,
+.textareacs{
+  width: 100%;
+  outline: none;
+  border: 1px solid #d5dbd9;
+  font-size: 15px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.textareacs{
+  width: 100%;
+  height: 125px;
+  resize: vertical;
+}
+
+.label{
+  width: 200px;
+  color: #757575;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+
+.inputs:focus,
+.textareacs:focus,
+.custom-select select:focus,
+.custom-select-multi select:focus{
+  border: 1px solid #ff9645;
+}
+
+.btn{
+  width: 100%;
+  position: center;
+  padding: 8px 10px;
+  font-size: 15px; 
+  border: 0px;
+  /*background:  #ff862c;*/
+  background: linear-gradient(to right, #ff862c, #ff5917);
+  color: #fff;
+  cursor: pointer;
+  border-radius: 10px;
+  outline: none;
+}
+
+.btn:hover{
+  background: #ff9645;
+}
+
+.custom-select{
+  position: relative;
+  width: 100%;
+  height: 37px;
+}
+
+.custom-select-multi{
+  position: relative;
+  width: 100%;
+  height:min-content;
+}
+
+.custom-select select{
+  -webkit-appearance: none;
+  -moz-appearance:   none;
+  appearance:        none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  border: 0px;
+  padding: 8px 10px;
+  font-size: 15px;
+  border: 1px solid #d5dbd9;
+  border-radius: 10px;
+}
+
+.custom-select-multi select{
+  -webkit-appearance: none;
+  -moz-appearance:   none;
+  appearance:        none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  border: 0px;
+  padding: 8px 10px;
+  font-size: 15px;
+  border: 1px solid #d5dbd9;
+  border-radius: 10px;
+}
+
+.custom-select:before{
+  content: "";
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  border: 8px solid;
+  border-color: #d5dbd9 transparent transparent transparent;
+  pointer-events: none;
+}
+
+
+.inputfield:last-child{
+  margin-bottom: 0;
+}
+
+
+@media (max-width:420px) {
+  .inputs{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .textareacs{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .label{
+    margin-bottom: 5px;
+  }
+
+  .inputfield.terms{
+    flex-direction: row;
+  }
+}
