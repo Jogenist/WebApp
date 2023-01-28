@@ -15,18 +15,11 @@
 
             <li><a href="/index.php">Home</a></li>
 
-            <li class="services">
+            <li><a href="/add_new_stock.php">Buy Stock</a></li>
 
-                <a href="/customer.php">Nutzerkonto</a>
+            <li><a href="/reset-password.php">Reset Password</a></li>
 
-                <!-- DROPDOWN MENU -->
-                <ul class="dropdown">
-                    <li><a href="/add_new_vehicle.php">Neues Fahrzeug </a></li>
-                    <li><a href="/view_all_vehicles.php">Alle Fahrzeuge </a></li>
-                    <li><a href="/add_new_stock.php">New Stock</a></li>
-                    <li><a href="/view_all_customers.php">Alle Kundendaten</a></li>
-                </ul>
-            </li>
+            <li><a href="/logout.php">Logout</a></li>
         </div>
     </ul>
 </nav>

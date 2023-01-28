@@ -29,12 +29,14 @@
 <body>
     
     <?php include "navbar.php";
+    include "./php/db_users_connect.php"
     #keys: 1A7WY1GIQ35IYI50, UEHA1N7EEYXN3TZZ, POXK65LMPSIFYHCQ
     ?>
-    
     <div class="wrapper">
     <form action="./php/updateStocks.php" method="get">
     <input type="submit" value="Refresh portfolio">
+    <p>
+    </p>
     </form> 
         <div class="row">
                 <table>
