@@ -69,35 +69,45 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Check input errors before inserting in database
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
         
-        // Prepare an insert statement
-        $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
-         
-        if($stmt = mysqli_prepare($mysql_users, $sql)){
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
-            
-            // Set parameters
-            $param_username = $username;
-            $param_password = crypt($password, PASSWORD_DEFAULT); // Creates a password hash
-            
-            // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
-                // Redirect to login page
-                #header("location: login.php");
-                #redirect by injecting javascript
-                echo "<script>window.location.href='login.php';</script>";
-            } else{
-                echo "Oops! Something went wrong. Please try again later.";
-            }
 
-            // Close statement
-            mysqli_stmt_close($stmt);
+        $param_username = $username;
+        $param_password = crypt($password, 'PASSWORD_DEFAULT'); // Creates a password hash
+        $money = 25000;
+
+        $sql = "INSERT INTO users (username, password, Money) VALUES ('$param_username', '$param_password', '$money')";
+        $result = $mysql_users->query($sql);
+
+
+        // Prepare an insert statement
+        //$sql = "INSERT INTO users (username, password, Money) VALUES (?, ?, ?)";
+         
+        // if($stmt = mysqli_prepare($mysql_users, $sql)){
+        //     // Bind variables to the prepared statement as parameters
+        //     mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password, $money);
+            
+        //     // Set parameters
+        //     $param_username = $username;
+        //     $param_password = crypt($password, PASSWORD_DEFAULT); // Creates a password hash
+        //     $money = 25000;
+        //     // Attempt to execute the prepared statement
+        //     if(mysqli_stmt_execute($stmt)){
+        //         // Redirect to login page
+        //         #header("location: login.php");
+        //         #redirect by injecting javascript
+        //         echo "<script>window.location.href='login.php';</script>";
+        //     } else{
+        //         echo "Oops! Something went wrong. Please try again later.";
+        //     }
+
+        //     // Close statement
+        //     mysqli_stmt_close($stmt);
         }
     }
     
     // Close connection
     mysqli_close($mysql_users);
-}
+    #echo '<script>alert("Account created")</script>';
+    include "login.php";
 ?>
  
 <!DOCTYPE html>

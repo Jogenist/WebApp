@@ -1,7 +1,7 @@
 <nav class="navbar">
 
     <!-- LOGO -->
-    <div class="logo">virtual stock portfolio</div>
+    <div class="logo">virtual stock portfolio (pre-alpha)</div>
 
     <!-- NAVIGATION MENU -->
     <ul class="nav-links">

@@ -25,7 +25,6 @@
     $search_str = $search_str1 . $symbol_from_form . $search_str2;
     $json = file_get_contents($search_str);
     $company = json_decode($json,true);
-    print_r($company);
     $company = $company['Name'];
  
     #get stock price by stock symbol
@@ -52,11 +51,40 @@
     #calculate value
     $value = $price * $amount_from_form;
   
-    // mySQL Anfrage verpackt in php
+
+    #check if user has enough money to buy
     $user = $_SESSION["username"];
+    $sql = "SELECT Money FROM users";
+    $result = $mysql_users->query($sql);
+    
+    if (!$result) {
+      die("Invalid query: " . $mysqli->error);
+    }
+  
+  
+    while ($row = $result->fetch_assoc()) {
+        $currentMoney = $row["Money"];
+    }
+
+    if ($currentMoney < $value) #if user has not enough money, tell him
+    {
+      echo '<script>alert("You dont have enough money to buy that!")</script>';
+      // Redirect to add stocks page
+      header("location: redirect.php");
+      exit; 
+    }
+    else #if user has enough money, let him pay
+    {
+      $newMoney = $currentMoney - $value;
+      $sql = "UPDATE users SET Money=$newMoney WHERE username='$user'";
+      $result = $mysql_users->query($sql);
+    }
+
+    #buy stock
+    // mySQL Anfrage verpackt in php
     $sql = "INSERT INTO stocks (Name, Symbol, Amount, Price, Value, User) VALUES ('$company', '$symbol_from_form', '$amount_from_form', '$price', '$value', '$user')";
     $result = $mysqli->query($sql);
-    echo '<script>alert("Kundendaten gespeichert")</script>';
+    echo '<script>alert("You bought stocks!")</script>';
   }
   else
   {

@@ -3,7 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>virtual stock portfolio</title>
+    <title>virtual stock portfolio (Alpha)</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css?version=51">
     <link rel="stylesheet" type="text/css" href="./css/navbar.css?version=51">
     <style>
@@ -51,10 +51,10 @@
                 <table>
                     <tr>
                         <th>Name</th>
-                        <th>WkN</th>
-                        <th>Anzahl</th>
-                        <th>Kurs [&#x20AC;]</th>
-                        <th>Wert [&#x20AC;]</th>
+                        <th>Symbol</th>
+                        <th>Amount</th>
+                        <th>Price [&#x20AC;]</th>
+                        <th>Value [&#x20AC;]</th>
                     </tr>   
                     <?php
                     include "./php/db_connect.php";
