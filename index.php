@@ -28,8 +28,17 @@
 
 <body>
     
-    <?php include "navbar.php";
-    include "./php/db_users_connect.php"
+    <?php 
+    include "navbar.php";
+    include "./php/db_users_connect.php";
+    // Initialize the session
+    session_start();
+  
+    // Check if the user is logged in, otherwise redirect to login page
+      if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+        header("location: login.php");
+        exit;
+    }
     #keys: 1A7WY1GIQ35IYI50, UEHA1N7EEYXN3TZZ, POXK65LMPSIFYHCQ
     ?>
     <div class="wrapper">
@@ -49,8 +58,9 @@
                     </tr>   
                     <?php
                     include "./php/db_connect.php";
-
-                    $sql = "SELECT * FROM stocks";
+                    #$sql = "UPDATE stocks SET Price=$price WHERE Symbol='$stock_symbol'";
+                    $user = $_SESSION["username"];
+                    $sql = "SELECT * FROM stocks WHERE User='$user'";
                     $result = mysqli_query($mysqli, $sql);
 
                     if (!$result) {

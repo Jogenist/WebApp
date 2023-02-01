@@ -1,5 +1,15 @@
 <?php
-
+  // Initialize the session
+  session_start();
+  
+  // Check if the user is logged in, otherwise redirect to login page
+  if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+      header("location: login.php");
+      exit;
+  }
+ 
+  // Include config file
+  require_once "db_users_connect.php";
   include "db_connect.php";
 
   $symbol_from_form = $_GET["add_stk_symb"];
@@ -43,7 +53,8 @@
     $value = $price * $amount_from_form;
   
     // mySQL Anfrage verpackt in php
-    $sql = "INSERT INTO stocks (Name, Symbol, Amount, Price, Value) VALUES ('$company', '$symbol_from_form', '$amount_from_form', '$price', '$value' )";
+    $user = $_SESSION["username"];
+    $sql = "INSERT INTO stocks (Name, Symbol, Amount, Price, Value, User) VALUES ('$company', '$symbol_from_form', '$amount_from_form', '$price', '$value', '$user')";
     $result = $mysqli->query($sql);
     echo '<script>alert("Kundendaten gespeichert")</script>';
   }
