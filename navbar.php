@@ -17,6 +17,8 @@
 
             <li><a href="/add_new_stock.php">Buy Stock</a></li>
 
+            <li><a href="/sell_stock.php">Sell Stock</a></li>
+
             <li><a href="/reset-password.php">Reset Password</a></li>
 
             <li><a href="/logout.php">Logout</a></li>

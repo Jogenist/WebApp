@@ -30,7 +30,7 @@
     
     <?php 
     include "navbar.php";
-    include "./php/db_users_connect.php";
+    include "db_users_connect.php";
     // Initialize the session
     session_start();
   
@@ -42,8 +42,8 @@
     #keys: 1A7WY1GIQ35IYI50, UEHA1N7EEYXN3TZZ, POXK65LMPSIFYHCQ
     ?>
     <div class="wrapper">
-    <form action="./php/updateStocks.php" method="get">
-    <input type="submit" value="Refresh portfolio">
+    <form action="updateStocks.php" method="get">
+    <input type="submit" value="Refresh portfolio"> 
     <p>
     </p>
     </form> 
@@ -57,7 +57,7 @@
                         <th>Value [&#x20AC;]</th>
                     </tr>   
                     <?php
-                    include "./php/db_connect.php";
+                    include "db_connect.php";
                     #$sql = "UPDATE stocks SET Price=$price WHERE Symbol='$stock_symbol'";
                     $user = $_SESSION["username"];
                     $sql = "SELECT * FROM stocks WHERE User='$user'";
@@ -83,6 +83,18 @@
                         <td>" . $value . "</td>
                         </tr>";
                             }
+                        $sql = "SELECT * FROM users WHERE username='$user'";
+                        $result = mysqli_query($mysql_users, $sql);
+    
+                        if (!$result) {
+                            die("Invalid query: " . $mysql_users->error);
+                        }
+    
+    
+                        while ($row = $result->fetch_assoc()) {
+                            $net_worth = $row['Money'];
+                        }
+                    echo $net_worth;
                     ?>
                 </table> 
             </div>

@@ -14,10 +14,10 @@
 <body>
 <?php include "navbar.php"; ?>
 <div class="wrapper">
-    <div class="title">New Stock</div>
+    <div class="title">Sell Stocks</div>
 
     <!-- Formular Begin-->
-    <form class="form" action="add_stock_to_database.php" >
+    <form class="form" action="sell_stock_from_database.php" >
 
       <!-- Klasse für Eimgabefelder-->
       <div class="inputfield">
@@ -31,7 +31,7 @@
       </div>
 
       <!-- Speicherknopf -->
-      <input class="btn" type="submit" value="Hinzufügen">
+      <input class="btn" type="submit" value="Sell">
     </form>
 </div>
 

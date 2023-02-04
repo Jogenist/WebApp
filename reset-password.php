@@ -9,7 +9,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 }
  
 // Include config file
-require_once "./php/db_users_connect.php";
+require_once "db_users_connect.php";
 require_once 'password_lib.php';
  
 // Define variables and initialize with empty values
